@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../db');
-const Course = sequelize.define('Course', {
+const Guardian = sequelize.define('Guardian', {
   name: { type: DataTypes.STRING, allowNull: false },
-  programId: { type: DataTypes.INTEGER, allowNull: false }
+  phone: { type: DataTypes.STRING }
 });
-module.exports = Course;
+module.exports = Guardian;

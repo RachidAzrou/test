@@ -1,19 +1,23 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import Students from './pages/Students';
-// Add imports for Teachers, Courses, Fees as you expand
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import StudentGroups from './pages/StudentGroups';
+import StudentGroupMembers from './pages/StudentGroupMembers';
+import Notifications from './pages/Notifications';
+import Dashboard from './pages/Dashboard';
+// ...andere imports
 
-export default function App() {
+function App() {
+  const userId = /* haal userId uit auth context/token */;
   return (
     <BrowserRouter>
-      <nav>
-        <Link to="/students">Students</Link>
-        {/* Add links for Teachers, Courses, Fees as you expand */}
-      </nav>
       <Routes>
-        <Route path="/students" element={<Students />} />
-        {/* Add routes for Teachers, Courses, Fees as you expand */}
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/groups" element={<StudentGroups />} />
+        <Route path="/groups/:groupId/members" element={<StudentGroupMembers />} />
+        <Route path="/notifications" element={<Notifications userId={userId} />} />
+        {/* ...andere routes */}
       </Routes>
     </BrowserRouter>
   );
 }
+
+export default App;
